@@ -252,22 +252,20 @@ let i=0;
 
 function escribir(){
 
-if(i<msg.length){
 
-text.textContent+=msg.charAt(i);
- window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: "smooth"
-});
+if(i < msg.length){
+
+text.textContent += msg.charAt(i);
+text.scrollTop = text.scrollHeight;
+window.scrollTo(0, document.body.scrollHeight);
 
 i++;
 
-setTimeout(escribir,35);
+setTimeout(escribir, 35);
 
 }else{
 
 document.getElementById("continueBox").style.display="block";
-
 document.getElementById("continueBtn").style.display="inline-block";
 
 }
