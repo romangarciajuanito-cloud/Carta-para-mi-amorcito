@@ -68,8 +68,8 @@ max-width:800px;
 margin:auto;
 padding:25px;
 height:100vh;
-overflow:hidden;
-}
+overflow:auto;
+} 
 
 .paper{
 background:#f9f1e4;
@@ -256,8 +256,6 @@ function escribir(){
 if(i < msg.length){
 
 text.textContent += msg.charAt(i);
-const contenido = document.getElementById("content");
-contenido.scrollTop = contenido.scrollHeight;
 
 i++;
 
@@ -288,8 +286,6 @@ escribir();
 
 };
   document.getElementById("continueBtn").onclick=function(){
-
-document.getElementById("content").style.overflow="auto";
 
 document.getElementById("continueBox").style.display="none";
 
