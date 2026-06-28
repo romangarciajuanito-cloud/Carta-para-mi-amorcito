@@ -214,16 +214,7 @@ src="https://files.catbox.moe/8g5s0y.jpg">
 ¿Sabes cuáles son las razones por las que te amo? ❤️
 </h2>
 
-<div style="text-align:center;margin-top:20px;">
 
-<button id="reasonBtn"
-onclick="nextReason()">
-
-Descubrir otra razón ❤️
-
-</button>
-
-</div>
 
 <div id="reasons"></div>
 
@@ -326,34 +317,21 @@ const razones=[
 "Porque simplemente eres tú ❤️."
 
 ];
+  const contenedor = document.getElementById("reasons");
 
-let indice=0;
+razones.forEach((razon, i) => {
 
-function nextReason(){
+const div = document.createElement("div");
+div.className = "reason";
+div.style.display = "block";
+div.innerHTML = "❤️ " + razon;
 
-if(indice>=razones.length){
+// animación
+div.style.animationDelay = (i * 0.3) + "s";
 
-document.getElementById("reasonBtn").disabled=true;
+contenedor.appendChild(div);
 
-document.getElementById("reasonBtn").textContent="❤️ Ya descubriste todas ❤️";
-
-return;
-
-}
-
-const div=document.createElement("div");
-
-div.className="reason";
-
-div.style.display="block";
-
-div.innerHTML="❤️ "+razones[indice];
-
-document.getElementById("reasons").appendChild(div);
-
-indice++;
-
-}
+});
 
 </script>
 
