@@ -2,14 +2,11 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Para Fátima ❤️</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -96,6 +93,7 @@ font-size:20px;
 line-height:1.8;
 white-space:pre-wrap;
 }
+
 .photo{
 width:100%;
 margin:25px 0;
@@ -107,17 +105,9 @@ transform:translateY(40px);
 animation:fadeUp 1s forwards;
 }
 
-.photo:nth-of-type(1){
-animation-delay:.4s;
-}
-
-.photo:nth-of-type(2){
-animation-delay:.8s;
-}
-
-.photo:nth-of-type(3){
-animation-delay:1.2s;
-}
+.photo:nth-of-type(1){animation-delay:.4s;}
+.photo:nth-of-type(2){animation-delay:.8s;}
+.photo:nth-of-type(3){animation-delay:1.2s;}
 
 button{
 padding:12px 22px;
@@ -153,72 +143,45 @@ animation:fade .6s ease;
 }
 
 @keyframes fade{
-from{
-opacity:0;
-transform:translateY(15px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
+to{opacity:1;transform:translateY(0);}
 }
 </style>
-
 </head>
 
 <body>
 
 <div id="cover">
-
 <h2>Una carta para Fátima ❤️</h2>
 
 <div id="envelope">
 💌 Toca para abrir el sobre
 </div>
 
-<audio id="music"
-src="https://files.catbox.moe/2lwvku.m4a">
-</audio>
-
+<audio id="music" src="https://files.catbox.moe/2lwvku.m4a"></audio>
 </div>
 
 <main id="content">
-
 <div class="paper">
 
 <h1>Mi hermosa Fátima ❤️</h1>
-
 <p id="text"></p>
- <br><br>
 
 <div id="continueBox" style="display:none;text-align:center;">
-
-<button id="continueBtn">
-
-Continuar ❤️
-
-</button>
-
+<button id="continueBtn">Continuar ❤️</button>
 </div>
 
-<img class="photo"
- <p id="textoAnimado" class="texto-bonito"></p>
-src="https://files.catbox.moe/7ku7di.jpg">
- <p id="texto1" class="texto-bonito"></p>
+<img class="photo" src="https://files.catbox.moe/7ku7di.jpg">
+<p id="texto1" class="texto-bonito"></p>
 
-<img class="photo"
-src="https://files.catbox.moe/7ok5q4.jpg">
-
+<img class="photo" src="https://files.catbox.moe/7ok5q4.jpg">
 <p id="texto2" class="texto-bonito"></p>
 
- <p class="texto-bonito">
+<p class="texto-bonito">
 En este momento no solo te doy un beso, 
 te doy todo lo que siento por ti. ❤️  
 
@@ -230,46 +193,84 @@ Ese beso lleva todo mi cariño,
 todo mi amor… y todas las ganas de seguir contigo.
 </p>
 
-<img class="photo"
-src="https://files.catbox.moe/8g5s0y.jpg">
-
+<img class="photo" src="https://files.catbox.moe/8g5s0y.jpg">
 <p id="texto3" class="texto-bonito"></p>
- <p class="texto-bonito">
+
+<p class="texto-bonito">
 Tu belleza es algo que no se puede explicar fácilmente.  
 
 No es solo lo hermosa que te ves, 
 sino lo que haces sentir con solo mirarte.  
-Tienes algo especial, algo que no cualquiera tiene…  
 
-Esa combinación de ternura, luz y forma de ser 
-que hace que seas simplemente perfecta para mí. ❤️  
+Tienes algo especial…  
 
 Y no importa cuántas veces te vea, 
-siempre voy a pensar lo mismo:  
-qué suerte tengo de tener a alguien como tú.
- </p>
+siempre voy a pensar lo mismo ❤️
+</p>
 
 <h2 style="margin-top:35px;text-align:center;">
 ¿Sabes cuáles son las razones por las que te amo? ❤️
 </h2>
 
-
-
 <div id="reasons"></div>
 
 <p style="margin-top:40px;text-align:right;font-size:22px;">
-
 Con todo mi amor,<br>
-
 <b>Juan ❤️</b>
-
 </p>
 
 </div>
-
 </main>
- <script>
 
+<script>
+
+// TEXTO PRINCIPAL
+const msg = `Mi hermosa Fátima:
+
+Desde que llegaste a mi vida todo cambió para bien. 
+Eres una mujer increíble, hermosa por dentro y por fuera.
+
+Tu sonrisa ilumina mis días,
+tu mirada me da paz
+y tu forma de ser hace que cada momento contigo sea especial.
+
+Gracias por existir ❤️
+
+Cada día encuentro una razón más para enamorarme de ti.`;
+
+
+const text = document.getElementById("text");
+let i = 0;
+
+function escribir(){
+if(i < msg.length){
+text.textContent += msg.charAt(i);
+i++;
+setTimeout(escribir, 35);
+}else{
+document.getElementById("continueBox").style.display="block";
+document.getElementById("continueBtn").style.display="inline-block";
+}
+}
+
+// ABRIR CARTA
+document.getElementById("envelope").onclick=function(){
+const musica=document.getElementById("music");
+musica.currentTime=61;
+musica.play().catch(()=>{});
+
+document.getElementById("cover").style.display="none";
+document.getElementById("content").style.display="block";
+
+escribir();
+};
+
+// BOTÓN CONTINUAR
+document.getElementById("continueBtn").onclick=function(){
+document.getElementById("continueBox").style.display="none";
+};
+
+// TEXTOS ANIMADOS
 function escribirTexto(id, mensaje, velocidad = 40){
 let i = 0;
 const elemento = document.getElementById(id);
@@ -281,121 +282,35 @@ i++;
 setTimeout(escribir, velocidad);
 }
 }
-
 escribir();
 }
 
-// 👇 TUS TEXTOS
-escribirTexto("texto1", "Desde el primer momento en que te vi, supe que eras especial...");
-escribirTexto("texto2", "Ese momento cuando te doy un beso en el cachete...");
-escribirTexto("texto3", "Tu belleza no es solo lo que se ve... hay muchas razones por las que me encantas ❤️");
+escribirTexto("texto1", "Desde el primer momento en que te vi...");
+escribirTexto("texto2", "Ese momento cuando te doy un beso...");
+escribirTexto("texto3", "Tu belleza no es solo lo que se ve ❤️");
 
-</script>
-const msg=`Mi hermosa Fátima:
-
-Desde que llegaste a mi vida todo cambió para bien. Eres una mujer increíble, hermosa por dentro y por fuera. Tu sonrisa ilumina mis días, tu mirada me da paz y tu forma de ser hace que cada momento contigo sea especial.
-
-Gracias por existir, por regalarme tu cariño y por permitirme formar parte de tu vida. Cada día encuentro una razón más para enamorarme de ti.`;
-
-const text=document.getElementById("text");
-
-let i=0;
-
-function escribir(){
-
-
-if(i < msg.length){
-
-text.textContent += msg.charAt(i);
-
-i++;
-
-setTimeout(escribir, 35);
-
-}else{
-
-document.getElementById("continueBox").style.display="block";
-document.getElementById("continueBtn").style.display="inline-block";
-
-}
-
-}
-
-document.getElementById("envelope").onclick=function(){
-
-const musica=document.getElementById("music");
-
-musica.currentTime=61;
-
-musica.play().catch(()=>{});
-
-document.getElementById("cover").style.display="none";
-
-document.getElementById("content").style.display="block";
-
-escribir();
-
-};
-  document.getElementById("continueBtn").onclick=function(){
-
-document.getElementById("continueBox").style.display="none";
-
-document.getElementById("continueBtn").style.display="none";
-
-};
-
+// RAZONES
 const razones=[
-
 "Porque eres hermosa.",
-
 "Porque tu sonrisa alegra mis días.",
-
 "Porque tus ojos me enamoran.",
-
 "Porque me haces feliz.",
-
 "Porque eres mi lugar seguro.",
-
-"Porque confías en mí.",
-
-"Porque me inspiras a ser mejor.",
-
-"Porque eres tierna.",
-
-"Porque eres fuerte.",
-
-"Porque eres inteligente.",
-
-"Porque me haces sentir amado.",
-
-"Porque siempre pienso en ti.",
-
-"Porque contigo todo tiene más sentido.",
-
-"Porque eres mi novia y el amor de mi vida.",
-
 "Porque simplemente eres tú ❤️."
-
 ];
-  const contenedor = document.getElementById("reasons");
+
+const contenedor = document.getElementById("reasons");
 
 razones.forEach((razon, i) => {
-
 const div = document.createElement("div");
 div.className = "reason";
 div.style.display = "block";
 div.innerHTML = "❤️ " + razon;
-
-// animación
 div.style.animationDelay = (i * 0.3) + "s";
-
 contenedor.appendChild(div);
-
 });
 
 </script>
 
 </body>
-
 </html>
-  
