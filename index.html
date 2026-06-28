@@ -256,8 +256,8 @@ function escribir(){
 if(i < msg.length){
 
 text.textContent += msg.charAt(i);
-text.scrollTop = text.scrollHeight;
-window.scrollTo(0, document.body.scrollHeight);
+const contenido = document.getElementById("content");
+contenido.scrollTop = contenido.scrollHeight;
 
 i++;
 
@@ -289,7 +289,7 @@ escribir();
 };
   document.getElementById("continueBtn").onclick=function(){
 
-document.body.style.overflow="auto";
+document.getElementById("content").style.overflow="auto";
 
 document.getElementById("continueBox").style.display="none";
 
