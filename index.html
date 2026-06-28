@@ -63,7 +63,6 @@ background:rgba(255,255,255,.15);
 }
 
 main{
-main{
 display:none;
 max-width:800px;
 margin:auto;
@@ -256,10 +255,8 @@ function escribir(){
 if(i<msg.length){
 
 text.textContent+=msg.charAt(i);
- const contenido = document.getElementById("content");
-
-contenido.scrollTo({
-    top: contenido.scrollHeight,
+ window.scrollTo({
+    top: document.body.scrollHeight,
     behavior: "smooth"
 });
 
