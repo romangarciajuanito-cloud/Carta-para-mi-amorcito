@@ -63,10 +63,13 @@ background:rgba(255,255,255,.15);
 }
 
 main{
+main{
 display:none;
 max-width:800px;
 margin:auto;
 padding:25px;
+height:100vh;
+overflow:hidden;
 }
 
 .paper{
@@ -253,6 +256,12 @@ function escribir(){
 if(i<msg.length){
 
 text.textContent+=msg.charAt(i);
+ const contenido = document.getElementById("content");
+
+contenido.scrollTo({
+    top: contenido.scrollHeight,
+    behavior: "smooth"
+});
 
 i++;
 
