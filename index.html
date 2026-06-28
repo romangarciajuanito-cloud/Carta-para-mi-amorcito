@@ -29,8 +29,8 @@ overflow:auto;
 
 .texto-bonito{
 text-align:center;
-font-size:18px;
-margin:20px;
+font-size:20px;
+margin:30px 20px;
 line-height:1.6;
 }
 
@@ -209,10 +209,15 @@ Continuar ❤️
 </div>
 
 <img class="photo"
+ <p id="textoAnimado" class="texto-bonito"></p>
 src="https://files.catbox.moe/7ku7di.jpg">
+ <p id="texto1" class="texto-bonito"></p>
 
 <img class="photo"
 src="https://files.catbox.moe/7ok5q4.jpg">
+
+<p id="texto2" class="texto-bonito"></p>
+
  <p class="texto-bonito">
 En este momento no solo te doy un beso, 
 te doy todo lo que siento por ti. ❤️  
@@ -227,6 +232,8 @@ todo mi amor… y todas las ganas de seguir contigo.
 
 <img class="photo"
 src="https://files.catbox.moe/8g5s0y.jpg">
+
+<p id="texto3" class="texto-bonito"></p>
  <p class="texto-bonito">
 Tu belleza es algo que no se puede explicar fácilmente.  
 
@@ -263,6 +270,27 @@ Con todo mi amor,<br>
 </main>
  <script>
 
+function escribirTexto(id, mensaje, velocidad = 40){
+let i = 0;
+const elemento = document.getElementById(id);
+
+function escribir(){
+if(i < mensaje.length){
+elemento.textContent += mensaje.charAt(i);
+i++;
+setTimeout(escribir, velocidad);
+}
+}
+
+escribir();
+}
+
+// 👇 TUS TEXTOS
+escribirTexto("texto1", "Desde el primer momento en que te vi, supe que eras especial...");
+escribirTexto("texto2", "Ese momento cuando te doy un beso en el cachete...");
+escribirTexto("texto3", "Tu belleza no es solo lo que se ve... hay muchas razones por las que me encantas ❤️");
+
+</script>
 const msg=`Mi hermosa Fátima:
 
 Desde que llegaste a mi vida todo cambió para bien. Eres una mujer increíble, hermosa por dentro y por fuera. Tu sonrisa ilumina mis días, tu mirada me da paz y tu forma de ser hace que cada momento contigo sea especial.
